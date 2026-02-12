@@ -1,4 +1,3 @@
-
 import { ToolCategory, PricingType, IATool } from './types';
 
 export const INITIAL_TOOLS: IATool[] = [
@@ -82,75 +81,5 @@ export const INITIAL_TOOLS: IATool[] = [
     pricing: PricingType.PAID,
     addedAt: '2023-12-05',
     features: ['Threat Intelligence', 'Dark Web Monitoring']
-  },
-  {
-    id: '9',
-    name: 'Darktrace HEAL',
-    category: ToolCategory.DEFENSE,
-    description: 'IA de auto-aprendizagem que simula ataques e ajuda na recuperação de sistemas após incidentes.',
-    url: 'https://darktrace.com/products/heal',
-    pricing: PricingType.PAID,
-    addedAt: '2023-11-01',
-    features: ['Auto-remediação', 'Cyber Resilience']
-  },
-  {
-    id: '10',
-    name: 'Checkmarx AI Guided Remediation',
-    category: ToolCategory.DEFENSE,
-    description: 'Guia desenvolvedores na correção de falhas de segurança fornecendo exemplos de código e explicações contextuais.',
-    url: 'https://checkmarx.com/',
-    pricing: PricingType.PAID,
-    addedAt: '2023-08-20',
-    features: ['AppSec assistida', 'Filtro de falsos positivos']
-  },
-  {
-    id: '11',
-    name: 'Wiz AI-SPM',
-    category: ToolCategory.DEFENSE,
-    description: 'IA para Postura de Segurança em Nuvem (CSPM) que prioriza riscos baseada em probabilidade de exploração.',
-    url: 'https://www.wiz.io/solutions/ai-spm',
-    pricing: PricingType.PAID,
-    addedAt: '2024-02-15',
-    features: ['Cloud Security', 'Priorização de riscos']
-  },
-  {
-    id: '12',
-    name: 'Tessian',
-    category: ToolCategory.DEFENSE,
-    description: 'Segurança de e-mail que usa IA para prevenir exfiltração de dados acidental e ataques de phishing direcionados.',
-    url: 'https://www.tessian.com/',
-    pricing: PricingType.PAID,
-    addedAt: '2023-05-01',
-    features: ['Email Security', 'DLP']
-  },
-  {
-    id: '13',
-    name: 'Hadra AI',
-    category: ToolCategory.ATTACK,
-    description: 'Ferramenta de enumeração inteligente que usa IA para identificar vulnerabilidades de injeção de prompt em outras IAs.',
-    url: 'https://github.com/hadra-ai',
-    pricing: PricingType.OPEN_SOURCE,
-    addedAt: '2024-04-05',
-    features: ['AI Red Teaming', 'Prompt Injection Testing']
-  },
-  {
-    id: '14',
-    name: 'Vectra AI',
-    category: ToolCategory.DEFENSE,
-    description: 'Deteção e Resposta de Rede (NDR) que utiliza IA para rastrear o movimento lateral de atacantes.',
-    url: 'https://www.vectra.ai/',
-    pricing: PricingType.PAID,
-    addedAt: '2023-09-01',
-    features: ['Network Detection', 'Lateral Movement Tracking']
-  },
-  {
-    id: '15',
-    name: 'Ironscales',
-    category: ToolCategory.DEFENSE,
-    description: 'Combina IA com feedback humano para detectar e remover e-mails de phishing avançados de forma automática.',
-    url: 'https://ironscales.com/',
-    pricing: PricingType.PAID,
-    addedAt: '2023-07-20',
-    features: ['Phishing remediation', 'Huma-AI']
   }
 ];

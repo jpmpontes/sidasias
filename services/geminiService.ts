@@ -1,18 +1,18 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { IATool, ToolCategory, PricingType } from "../types";
 
+// A API Key deve ser configurada nas Environment Variables do Netlify
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
 export const discoverNewTools = async (): Promise<{tools: IATool[], sources: any[]}> => {
   const prompt = `
-    Aja como um CISO. Encontre 10 ferramentas de IA para Segurança da Informação (Ataque ou Defesa) que são populares ou novas.
-    Retorne uma lista JSON seguindo exatamente este formato para cada item:
+    Aja como um especialista em Cyber Security. Encontre 5 ferramentas novas ou atualizadas de IA para Segurança da Informação.
+    Retorne uma lista JSON com este formato:
     {
-      "name": "Nome da Ferramenta",
+      "name": "Nome",
       "category": "Ataque" | "Defesa" | "Geral/Pesquisa",
-      "description": "Explicação técnica em português",
-      "url": "https://link-da-ferramenta.com",
+      "description": "Explicação curta em português",
+      "url": "https://link.com",
       "pricing": "Grátis" | "Pago" | "Freemium" | "Open Source",
       "features": ["feature 1", "feature 2"]
     }
@@ -54,7 +54,7 @@ export const discoverNewTools = async (): Promise<{tools: IATool[], sources: any
 
     return { tools: processedTools, sources };
   } catch (error) {
-    console.error(error);
+    console.error("Erro na busca de ferramentas:", error);
     throw error;
   }
 };

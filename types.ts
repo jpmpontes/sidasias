@@ -1,4 +1,3 @@
-
 export enum ToolCategory {
   ATTACK = 'Ataque',
   DEFENSE = 'Defesa',

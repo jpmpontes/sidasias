@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Header: React.FC = () => {
@@ -13,16 +12,10 @@ const Header: React.FC = () => {
             </h1>
             <p className="text-slate-400 max-w-xl text-lg leading-relaxed">
               O radar definitivo para Inteligência Artificial em <span className="text-emerald-400 font-mono font-bold">Cyber Security</span>. 
-              Mapeando o futuro da defesa e do ataque digital.
             </p>
           </div>
-          <div className="hidden lg:block">
-            <div className="p-6 border border-emerald-500/20 bg-emerald-500/5 rounded-2xl font-mono text-[10px] text-emerald-400 space-y-1">
-              <div>[ SYSTEM_STATUS: ONLINE ]</div>
-              <div>[ DATABASE_SYNC: ENCRYPTED ]</div>
-              <div>[ VERSION: 1.2.4 ]</div>
-              <div className="pt-2 animate-pulse font-bold">READY_TO_SCAN_NETWORK...</div>
-            </div>
+          <div className="hidden lg:block p-4 border border-emerald-500/20 bg-emerald-500/5 rounded-xl font-mono text-[10px] text-emerald-400">
+            [ SYSTEM: ACTIVE ] [ NODE: NETLIFY ]
           </div>
         </div>
       </div>
