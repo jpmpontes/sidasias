@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { IATool, ToolCategory } from '../types.ts';
+import { IATool, ToolCategory } from '../types';
 
 interface ToolCardProps {
   tool: IATool;
@@ -41,7 +40,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
       </div>
 
       <div className="mt-auto pt-6 border-t border-slate-800/50 flex items-center justify-between">
-        <div className="text-[10px] text-slate-600 font-mono">ADDED: {tool.addedAt}</div>
+        <div className="text-[10px] text-slate-600 font-mono italic">Added: {tool.addedAt}</div>
         <a href={tool.url} target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm flex items-center gap-1 group/link">
           Acessar
           <svg className="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

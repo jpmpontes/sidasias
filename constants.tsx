@@ -1,5 +1,4 @@
-
-import { ToolCategory, PricingType, IATool } from './types.ts';
+import { ToolCategory, PricingType, IATool } from './types';
 
 export const INITIAL_TOOLS: IATool[] = [
   {

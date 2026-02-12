@@ -1,12 +1,15 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
-import { IATool, ToolCategory, PricingType } from "../types.ts";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+import { IATool } from "../types";
 
 export const discoverNewTools = async (): Promise<{tools: IATool[], sources: any[]}> => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    throw new Error("API_KEY não configurada no ambiente.");
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
   const prompt = `
-    Aja como um especialista em Cyber Security. Encontre 5 ferramentas novas ou atualizadas de IA para Segurança da Informação.
+    Aja como um especialista em Cyber Security. Encontre 5 ferramentas reais e populares de IA para Segurança da Informação.
     Retorne uma lista JSON com este formato:
     {
       "name": "Nome",
@@ -44,15 +47,13 @@ export const discoverNewTools = async (): Promise<{tools: IATool[], sources: any
     });
 
     const toolsData = JSON.parse(response.text || '[]');
-    const sources = response.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
-    
     const processedTools: IATool[] = toolsData.map((t: any, index: number) => ({
       ...t,
       id: `ai-${Date.now()}-${index}`,
       addedAt: new Date().toLocaleDateString('pt-BR')
     }));
 
-    return { tools: processedTools, sources };
+    return { tools: processedTools, sources: [] };
   } catch (error) {
     console.error("Erro na busca de ferramentas:", error);
     throw error;

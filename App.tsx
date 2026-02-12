@@ -1,23 +1,20 @@
-
 import React, { useState, useMemo, useEffect } from 'react';
-import Header from './components/Header.tsx';
-import ToolCard from './components/ToolCard.tsx';
-import { INITIAL_TOOLS } from './constants.tsx';
-import { IATool, ToolCategory } from './types.ts';
-import { discoverNewTools } from './services/geminiService.ts';
+import Header from './components/Header';
+import ToolCard from './components/ToolCard';
+import { INITIAL_TOOLS } from './constants';
+import { ToolCategory } from './types';
+import { discoverNewTools } from './services/geminiService';
 
 const App: React.FC = () => {
-  const [tools, setTools] = useState<IATool[]>(() => {
+  const [tools, setTools] = useState(() => {
     try {
       const saved = localStorage.getItem('si_tools_db_v2');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
-        }
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       }
     } catch (e) {
-      console.error("Erro ao carregar dados salvos:", e);
+      console.warn("LocalStorage indisponível ou corrompido, usando dados iniciais.");
     }
     return INITIAL_TOOLS;
   });
@@ -38,16 +35,13 @@ const App: React.FC = () => {
   };
 
   const filteredTools = useMemo(() => {
-    if (!Array.isArray(tools)) return [];
-    return tools.filter(tool => {
+    const list = Array.isArray(tools) ? tools : INITIAL_TOOLS;
+    return list.filter(tool => {
       const term = search.toLowerCase();
-      const nameMatch = tool.name?.toLowerCase().includes(term) || false;
-      const descMatch = tool.description?.toLowerCase().includes(term) || false;
-      const featMatch = tool.features?.some(f => f.toLowerCase().includes(term)) || false;
-      
-      const matchesSearch = nameMatch || descMatch || featMatch;
+      const matchesSearch = 
+        tool.name?.toLowerCase().includes(term) || 
+        tool.description?.toLowerCase().includes(term);
       const matchesCategory = activeCategory === 'Tudo' || tool.category === activeCategory;
-      
       return matchesSearch && matchesCategory;
     });
   }, [tools, search, activeCategory]);
@@ -55,24 +49,25 @@ const App: React.FC = () => {
   const handleRefresh = async () => {
     setIsRefreshing(true);
     setRefreshLogs([]);
-    addLog("Sincronizando com rede neural...");
+    addLog("Iniciando escaneamento via IA...");
     
     try {
       const result = await discoverNewTools();
-      const existingNames = new Set(tools.map(t => t.name.toLowerCase()));
-      const newTools = result.tools.filter(t => !existingNames.has(t.name.toLowerCase()));
-      
-      if (newTools.length === 0) {
-        addLog("Nenhuma nova ferramenta detectada.");
-      } else {
-        addLog(`${newTools.length} novas ferramentas injetadas.`);
-        setTools(prev => [...newTools, ...prev]);
+      if (result && result.tools) {
+        const existingNames = new Set(tools.map((t: any) => t.name.toLowerCase()));
+        const newTools = result.tools.filter((t: any) => !existingNames.has(t.name.toLowerCase()));
+        
+        if (newTools.length > 0) {
+          addLog(`${newTools.length} novas ferramentas encontradas!`);
+          setTools((prev: any) => [...newTools, ...prev]);
+        } else {
+          addLog("Nenhuma novidade encontrada no momento.");
+        }
       }
-      setTimeout(() => setIsRefreshing(false), 2000);
     } catch (err) {
-      addLog("Erro na sincronização remota.");
-      console.error(err);
-      setTimeout(() => setIsRefreshing(false), 3000);
+      addLog("Falha na conexão com a rede neural.");
+    } finally {
+      setTimeout(() => setIsRefreshing(false), 2000);
     }
   };
 
@@ -91,7 +86,7 @@ const App: React.FC = () => {
           <div className="relative w-full lg:max-w-md">
             <input 
               type="text"
-              placeholder="Pesquisar por nome ou função..."
+              placeholder="Filtre pelo nome ou funcionalidade..."
               className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 pl-10 text-slate-200 focus:outline-none focus:border-emerald-500 font-mono text-sm"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -134,18 +129,18 @@ const App: React.FC = () => {
             ))}
           </div>
         ) : (
-          <div className="py-40 text-center">
-            <h3 className="text-xl text-slate-500 font-bold uppercase tracking-widest">Nenhuma ferramenta detectada</h3>
-            <p className="text-slate-600 mt-2">Tente ajustar seus filtros ou realizar uma busca via IA.</p>
+          <div className="py-40 text-center border-2 border-dashed border-slate-900 rounded-3xl">
+            <h3 className="text-xl text-slate-600 font-bold uppercase tracking-widest font-mono">System Idle: No Results</h3>
+            <p className="text-slate-700 mt-2 text-sm">Ajuste os filtros ou tente o sincronismo via IA.</p>
           </div>
         )}
       </main>
 
       <footer className="mt-32 py-12 border-t border-slate-900/50 text-center">
         <div className="text-[10px] text-slate-700 font-mono uppercase tracking-[0.5em] mb-2">
-          SI DAS IA'S HUB // DEPLOYED ON NETLIFY
+          SI DAS IA'S HUB // INFRASTRUCTURE ACTIVE
         </div>
-        <p className="text-slate-800 text-[8px] font-mono">ENCRYPTED INFRASTRUCTURE // SECURITY RESEARCH ONLY</p>
+        <p className="text-slate-800 text-[8px] font-mono">FOR RESEARCH PURPOSES ONLY // ENCRYPTED SESSION</p>
       </footer>
     </div>
   );
