@@ -6,32 +6,32 @@ export const INITIAL_TOOLS: IATool[] = [
     id: '1',
     name: 'PentestGPT',
     category: ToolCategory.ATTACK,
-    description: 'Framework interativo que utiliza LLMs para guiar testes de invasão, sugerindo vetores de ataque e analisando outputs de ferramentas como Nmap e Burp.',
+    description: 'Framework interativo que utiliza LLMs para guiar testes de invasão, sugerindo vetores de ataque e analisando outputs de ferramentas.',
     url: 'https://github.com/GreyD0ne/PentestGPT',
     pricing: PricingType.OPEN_SOURCE,
     addedAt: '2023-10-01',
-    features: ['Pentest estruturado', 'Análise de contexto', 'Sugestão de Exploit']
+    features: ['Pentest estruturado', 'Sugestão de Exploit']
   },
   {
     id: '2',
     name: 'Microsoft Copilot for Security',
     category: ToolCategory.DEFENSE,
-    description: 'Plataforma de IA generativa que ajuda defensores a responder a incidentes na velocidade da IA, integrando-se nativamente com Sentinel e Defender.',
+    description: 'IA generativa que ajuda defensores a responder a incidentes na velocidade da IA, integrando-se nativamente com Sentinel e Defender.',
     url: 'https://www.microsoft.com/en-us/security/business/ai-machine-learning/microsoft-copilot-for-security',
     pricing: PricingType.PAID,
     priceDetails: 'Modelo por SCU',
     addedAt: '2024-01-15',
-    features: ['Geração de relatórios SOC', 'Análise de scripts maliciosos', 'Threat Hunting']
+    features: ['Geração de relatórios SOC', 'Threat Hunting']
   },
   {
     id: '3',
     name: 'CrowdStrike Charlotte AI',
     category: ToolCategory.DEFENSE,
-    description: 'IA da CrowdStrike que permite interagir com dados do Falcon via linguagem natural, democratizando a busca por ameaças.',
+    description: 'IA que permite interagir com dados do Falcon via linguagem natural, democratizando a busca por ameaças.',
     url: 'https://www.crowdstrike.com/platform/charlotte-ai/',
     pricing: PricingType.PAID,
     addedAt: '2023-09-12',
-    features: ['Consultas em linguagem natural', 'Automação de workflows', 'Asset Discovery']
+    features: ['Consultas em linguagem natural', 'Asset Discovery']
   },
   {
     id: '4',
@@ -41,57 +41,57 @@ export const INITIAL_TOOLS: IATool[] = [
     url: 'https://www.sentinelone.com/platform/purple-ai/',
     pricing: PricingType.PAID,
     addedAt: '2024-03-01',
-    features: ['Semantic Search', 'Análise de alertas', 'Remediação automatizada']
+    features: ['Semantic Search', 'Remediação automatizada']
   },
   {
     id: '5',
     name: 'Snyk Code AI',
     category: ToolCategory.DEFENSE,
-    description: 'Mecanismo de SAST (Static Analysis Security Testing) que usa IA treinada em código real para encontrar falhas e sugerir patches.',
+    description: 'Mecanismo de SAST que usa IA treinada em código real para encontrar falhas e sugerir patches automáticos.',
     url: 'https://snyk.io/product/snyk-code/',
     pricing: PricingType.FREEMIUM,
     addedAt: '2023-11-05',
-    features: ['Auto-fix', 'Scanning em tempo real', 'Integração com IDE']
+    features: ['Auto-fix', 'Integração com IDE']
   },
   {
     id: '6',
     name: 'WormGPT',
     category: ToolCategory.ATTACK,
-    description: 'Ferramenta baseada em GPT sem restrições éticas, frequentemente associada a atividades de cybercrime e phishing avançado.',
+    description: 'IA baseada em GPT sem restrições éticas, usada para criação de campanhas de phishing e malware avançado.',
     url: 'https://wormgpt.ai/',
     pricing: PricingType.PAID,
     addedAt: '2023-07-15',
-    features: ['Criação de malware', 'E-mails de phishing persuasivos']
+    features: ['Malware Creation', 'Advanced Phishing']
   },
   {
     id: '7',
     name: 'VirusTotal Code Insight',
     category: ToolCategory.GENERAL,
-    description: 'Funcionalidade que utiliza LLMs para desconstruir e explicar o que um código suspeito (como PowerShell ou JS) realmente faz.',
+    description: 'Utiliza LLMs para desconstruir e explicar o que scripts suspeitos (PowerShell, JS) realmente fazem.',
     url: 'https://www.virustotal.com/',
     pricing: PricingType.FREEMIUM,
     addedAt: '2023-04-20',
-    features: ['Explicação de scripts', 'Análise estática assistida']
+    features: ['Explicação de scripts', 'IOC Extraction']
   },
   {
     id: '8',
-    name: 'Google Gemini for Security',
-    category: ToolCategory.DEFENSE,
-    description: 'Modelo especializado em segurança que processa bilhões de eventos de log no Chronicle para detectar ameaças furtivas.',
-    url: 'https://cloud.google.com/security/ai',
-    pricing: PricingType.PAID,
-    addedAt: '2024-05-10',
-    features: ['Análise massiva de logs', 'Playbooks de resposta']
-  },
-  {
-    id: '9',
     name: 'Recorded Future AI',
     category: ToolCategory.GENERAL,
-    description: 'Utiliza IA para analisar dados da surface, deep e dark web, fornecendo inteligência de ameaças acionável em tempo real.',
+    description: 'Utiliza IA para analisar dados da surface e dark web, fornecendo inteligência de ameaças em tempo real.',
     url: 'https://www.recordedfuture.com/platform/ai',
     pricing: PricingType.PAID,
     addedAt: '2023-12-05',
-    features: ['Threat Intelligence', 'Brand Protection', 'Vulnerability Prioritization']
+    features: ['Threat Intelligence', 'Dark Web Monitoring']
+  },
+  {
+    id: '9',
+    name: 'Darktrace HEAL',
+    category: ToolCategory.DEFENSE,
+    description: 'IA de auto-aprendizagem que simula ataques e ajuda na recuperação de sistemas após incidentes.',
+    url: 'https://darktrace.com/products/heal',
+    pricing: PricingType.PAID,
+    addedAt: '2023-11-01',
+    features: ['Auto-remediação', 'Cyber Resilience']
   },
   {
     id: '10',
@@ -111,7 +111,7 @@ export const INITIAL_TOOLS: IATool[] = [
     url: 'https://www.wiz.io/solutions/ai-spm',
     pricing: PricingType.PAID,
     addedAt: '2024-02-15',
-    features: ['Cloud Security', 'Priorização de riscos', 'Análise de grafos']
+    features: ['Cloud Security', 'Priorização de riscos']
   },
   {
     id: '12',
@@ -121,86 +121,36 @@ export const INITIAL_TOOLS: IATool[] = [
     url: 'https://www.tessian.com/',
     pricing: PricingType.PAID,
     addedAt: '2023-05-01',
-    features: ['Email Security', 'Data Loss Prevention', 'Phishing defense']
+    features: ['Email Security', 'DLP']
   },
   {
     id: '13',
-    name: 'Darktrace HEAL',
-    category: ToolCategory.DEFENSE,
-    description: 'Sistema de IA que permite às empresas simular ataques e curar-se de incidentes em andamento.',
-    url: 'https://darktrace.com/products/heal',
-    pricing: PricingType.PAID,
-    addedAt: '2023-11-01',
-    features: ['Auto-remediação', 'Recuperação de desastres']
-  },
-  {
-    id: '14',
-    name: 'Abnormal Security',
-    category: ToolCategory.DEFENSE,
-    description: 'Plataforma de segurança de e-mail que utiliza IA comportamental para detectar ataques BEC (Business Email Compromise).',
-    url: 'https://abnormalsecurity.com/',
-    pricing: PricingType.PAID,
-    addedAt: '2023-06-10',
-    features: ['Behavioral AI', 'BEC Prevention', 'Supply Chain Defense']
-  },
-  {
-    id: '15',
-    name: 'Aqua Security AI Support',
-    category: ToolCategory.DEFENSE,
-    description: 'Focada em segurança de containers e cloud-native, utiliza IA para analisar infraestrutura como código (IaC).',
-    url: 'https://www.aquasec.com/',
-    pricing: PricingType.FREEMIUM,
-    addedAt: '2024-01-20',
-    features: ['Container Security', 'IaC Analysis']
-  },
-  {
-    id: '16',
-    name: 'Expanse (Palo Alto Networks)',
-    category: ToolCategory.GENERAL,
-    description: 'Monitoramento contínuo da superfície de ataque externa usando IA para descobrir ativos expostos desconhecidos.',
-    url: 'https://www.paloaltonetworks.com/cortex/cortex-xpanse',
-    pricing: PricingType.PAID,
-    addedAt: '2023-03-15',
-    features: ['Attack Surface Management', 'Asset Inventory']
-  },
-  {
-    id: '17',
     name: 'Hadra AI',
     category: ToolCategory.ATTACK,
     description: 'Ferramenta de enumeração inteligente que usa IA para identificar vulnerabilidades de injeção de prompt em outras IAs.',
     url: 'https://github.com/hadra-ai',
     pricing: PricingType.OPEN_SOURCE,
     addedAt: '2024-04-05',
-    features: ['Prompt Injection Testing', 'AI Red Teaming']
+    features: ['AI Red Teaming', 'Prompt Injection Testing']
   },
   {
-    id: '18',
+    id: '14',
     name: 'Vectra AI',
     category: ToolCategory.DEFENSE,
-    description: 'Deteção e Resposta de Rede (NDR) que utiliza IA para rastrear o movimento lateral de atacantes dentro da rede.',
+    description: 'Deteção e Resposta de Rede (NDR) que utiliza IA para rastrear o movimento lateral de atacantes.',
     url: 'https://www.vectra.ai/',
     pricing: PricingType.PAID,
     addedAt: '2023-09-01',
     features: ['Network Detection', 'Lateral Movement Tracking']
   },
   {
-    id: '19',
-    name: 'Ironscales AI-Powered Email Security',
+    id: '15',
+    name: 'Ironscales',
     category: ToolCategory.DEFENSE,
-    description: 'Combina IA com feedback humano (Huma-AI) para detectar e remover e-mails de phishing avançados.',
+    description: 'Combina IA com feedback humano para detectar e remover e-mails de phishing avançados de forma automática.',
     url: 'https://ironscales.com/',
     pricing: PricingType.PAID,
     addedAt: '2023-07-20',
-    features: ['Phishing remediation', 'Human-in-the-loop']
-  },
-  {
-    id: '20',
-    name: 'Lacework AI',
-    category: ToolCategory.DEFENSE,
-    description: 'Segurança de nuvem orientada por dados que usa IA para reduzir o ruído de alertas em até 100x.',
-    url: 'https://www.lacework.com/',
-    pricing: PricingType.PAID,
-    addedAt: '2023-12-15',
-    features: ['Cloud Compliance', 'Anomaly Detection']
+    features: ['Phishing remediation', 'Huma-AI']
   }
 ];

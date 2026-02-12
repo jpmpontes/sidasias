@@ -1,6 +1,7 @@
+
 {
   "name": "SI das IA's",
-  "description": "Uma plataforma centralizada para descobrir ferramentas de Inteligência Artificial voltadas para Segurança da Informação, abrangendo defesa e ataque.",
+  "description": "Diretório de ferramentas de IA para Segurança da Informação (Defesa e Ataque).",
   "requestFramePermissions": [
     "geolocation"
   ]

@@ -23,10 +23,3 @@ export interface IATool {
   addedAt: string;
   features: string[];
 }
-
-export interface GroundingChunk {
-  web?: {
-    uri: string;
-    title: string;
-  };
-}
