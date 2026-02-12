@@ -1,7 +1,7 @@
-import { GoogleGenAI, Type } from "@google/genai";
-import { IATool, ToolCategory, PricingType } from "../types";
 
-// A API Key deve ser configurada nas Environment Variables do Netlify
+import { GoogleGenAI, Type } from "@google/genai";
+import { IATool, ToolCategory, PricingType } from "../types.ts";
+
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
 export const discoverNewTools = async (): Promise<{tools: IATool[], sources: any[]}> => {

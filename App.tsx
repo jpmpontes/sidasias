@@ -1,10 +1,10 @@
 
-import React, { useState, useMemo, useEffect, useRef } from 'react';
-import Header from './components/Header';
-import ToolCard from './components/ToolCard';
-import { INITIAL_TOOLS } from './constants';
-import { IATool, ToolCategory } from './types';
-import { discoverNewTools } from './services/geminiService';
+import React, { useState, useMemo, useEffect } from 'react';
+import Header from './components/Header.tsx';
+import ToolCard from './components/ToolCard.tsx';
+import { INITIAL_TOOLS } from './constants.tsx';
+import { IATool, ToolCategory } from './types.ts';
+import { discoverNewTools } from './services/geminiService.ts';
 
 const App: React.FC = () => {
   const [tools, setTools] = useState<IATool[]>(() => {
@@ -41,18 +41,18 @@ const App: React.FC = () => {
     if (!Array.isArray(tools)) return [];
     return tools.filter(tool => {
       const term = search.toLowerCase();
-      const matchesSearch = 
-        tool.name.toLowerCase().includes(term) || 
-        tool.description.toLowerCase().includes(term) ||
-        (tool.features && tool.features.some(f => f.toLowerCase().includes(term)));
+      const nameMatch = tool.name?.toLowerCase().includes(term) || false;
+      const descMatch = tool.description?.toLowerCase().includes(term) || false;
+      const featMatch = tool.features?.some(f => f.toLowerCase().includes(term)) || false;
       
+      const matchesSearch = nameMatch || descMatch || featMatch;
       const matchesCategory = activeCategory === 'Tudo' || tool.category === activeCategory;
+      
       return matchesSearch && matchesCategory;
     });
   }, [tools, search, activeCategory]);
 
   const handleRefresh = async () => {
-    // Nota: O process.env.API_KEY é injetado automaticamente pelo Netlify se configurado no painel
     setIsRefreshing(true);
     setRefreshLogs([]);
     addLog("Sincronizando com rede neural...");
@@ -135,7 +135,7 @@ const App: React.FC = () => {
           </div>
         ) : (
           <div className="py-40 text-center">
-            <h3 className="text-xl text-slate-500 font-bold uppercase tracking-widest">Nenhuma ferramenta detectada no banco de dados</h3>
+            <h3 className="text-xl text-slate-500 font-bold uppercase tracking-widest">Nenhuma ferramenta detectada</h3>
             <p className="text-slate-600 mt-2">Tente ajustar seus filtros ou realizar uma busca via IA.</p>
           </div>
         )}

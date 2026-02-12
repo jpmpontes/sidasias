@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { IATool, ToolCategory } from '../types';
+import { IATool, ToolCategory } from '../types.ts';
 
 interface ToolCardProps {
   tool: IATool;
@@ -32,7 +33,7 @@ const ToolCard: React.FC<ToolCardProps> = ({ tool }) => {
       </p>
 
       <div className="flex flex-wrap gap-2 mb-8">
-        {tool.features.map((f, i) => (
+        {tool.features?.map((f, i) => (
           <span key={i} className="text-[10px] font-mono bg-slate-800/50 text-slate-500 px-2 py-1 rounded border border-slate-700">
             {f}
           </span>
